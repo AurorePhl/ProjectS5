@@ -1,7 +1,21 @@
 package com.project.quizestce.models;
 
+import javax.persistence.Entity;
+import javax.persistence.GeneratedValue;
+import javax.persistence.Id;
+import javax.persistence.Table;
+
+import org.hibernate.annotations.GenericGenerator;
+
+@Table(name = "Questions")
+@Entity
 public class Questions {
+	
+	@Id
+	@GeneratedValue(generator = "system-uuid")
+	@GenericGenerator(name = "system-uuid", strategy = "uuid")
 	private String motCle;
+	
 	private String requete;
 	private String question;
 	
