@@ -1,5 +1,6 @@
 package com.project.quizestce.services;
-
-public class ButFrService {
-
+import java.util.List;
+import com.project.quizestce.models.ButeursFrancais;
+public interface ButFrService {
+	public List<ButeursFrancais> findAll();
 }
