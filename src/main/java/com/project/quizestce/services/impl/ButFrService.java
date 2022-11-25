@@ -23,7 +23,7 @@ public class ButFrService implements com.project.quizestce.services.ButFrService
 				j2.setId(2);
 				j2.setNom("Giroud");
 				j2.setPrenom("Olivier");
-				j2.setNbButsMarques(49);
+				j2.setNbButsMarques(51);
 				j2.setAge(36);
 				j2.setEnActivite(true);
 				liste.add(j2);
