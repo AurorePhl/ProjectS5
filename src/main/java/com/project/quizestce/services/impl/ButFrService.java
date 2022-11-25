@@ -21,5 +21,9 @@ public class ButFrService implements com.project.quizestce.services.ButFrService
 				butFrRepository.findAll().forEach(liste::add);;
 				return liste;
 	}
+	
+	public ButeursFrancais findById(int id) {
+		return butFrRepository.findById(id).get();
+	}
 
 }
