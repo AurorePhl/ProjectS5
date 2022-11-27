@@ -15,14 +15,27 @@ public class ButeursFrancais {
 	@GeneratedValue(generator = "system-uuid")
 	@GenericGenerator(name = "system-uuid", strategy = "uuid")
 	private int id;
-	
+	/* Clé primaire de la table ButeursFrancais */
 	private String nom;
 	private String prenom;
 	private int nbButsMarques;
 	private boolean enActivite;
-	
+	private String debutActivite; 
+	private String finActivite;
 	private int age; 
 	
+	public String getDebutActivite() {
+		return debutActivite;
+	}
+	public void setDebutActivite(String debutActivite) {
+		this.debutActivite = debutActivite;
+	}
+	public String getFinActivite() {
+		return finActivite;
+	}
+	public void setFinActivite(String finActivite) {
+		this.finActivite = finActivite;
+	}
 	public int getId() {
 		return id;
 	}

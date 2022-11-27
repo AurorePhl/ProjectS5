@@ -15,7 +15,7 @@ public class Questions {
 	@GeneratedValue(generator = "system-uuid")
 	@GenericGenerator(name = "system-uuid", strategy = "uuid")
 	private String motCle;
-	
+	/* Clé primaire de la table Questions */
 	private String requete;
 	private String question;
 	

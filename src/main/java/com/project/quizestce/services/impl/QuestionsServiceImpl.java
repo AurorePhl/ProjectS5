@@ -25,8 +25,7 @@ public class QuestionsServiceImpl implements QuestionsService {
 
 	@Override
 	public Questions findById(String motCle) {
-		
-		return null;
+		return questionsRepository.findById(motCle).get();
 	}
 
 }
