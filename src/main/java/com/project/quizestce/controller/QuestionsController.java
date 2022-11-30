@@ -26,5 +26,6 @@ public class QuestionsController {
 	public Questions findById(@PathVariable("motCle") String identifiant) {
 		return questionsService.findById(identifiant);
 	}
+	
 
 }

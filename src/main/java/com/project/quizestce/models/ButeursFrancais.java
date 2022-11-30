@@ -9,7 +9,7 @@ import org.hibernate.annotations.GenericGenerator;
 
 @Table(name = "ButeursFrancais")
 @Entity
-public class ButeursFrancais {
+public class ButeursFrancais{
 	
 	@Id
 	@GeneratedValue(generator = "system-uuid")

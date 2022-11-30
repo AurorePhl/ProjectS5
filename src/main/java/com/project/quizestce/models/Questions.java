@@ -22,6 +22,7 @@ public class Questions {
 	public String getMotCle() {
 		return motCle;
 	}
+	
 	public void setMotCle(String motCle) {
 		this.motCle = motCle;
 	}

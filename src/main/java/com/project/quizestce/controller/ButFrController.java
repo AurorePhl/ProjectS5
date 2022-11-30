@@ -25,4 +25,7 @@ public class ButFrController {
 	public ButeursFrancais findById(@PathVariable("id") int identifiant) {
 		return butFrService.findById(identifiant);
 	}
+	
+	
+	
 }

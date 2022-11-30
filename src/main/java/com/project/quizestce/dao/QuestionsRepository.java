@@ -6,4 +6,6 @@ import com.project.quizestce.models.Questions;
 
 public interface QuestionsRepository extends CrudRepository<Questions,String>{
 
+
+
 }

@@ -28,4 +28,5 @@ public class QuestionsServiceImpl implements QuestionsService {
 		return questionsRepository.findById(motCle).get();
 	}
 
+
 }
