@@ -7,18 +7,29 @@ import javax.persistence.Table;
 
 import org.hibernate.annotations.GenericGenerator;
 
-@Table(name = "Questions")
+@Table(name = "Réponse_True")
 @Entity
-public class Questions {
+public class ResTrue {
 	
 	@Id
 	@GeneratedValue(generator = "system-uuid")
 	@GenericGenerator(name = "system-uuid", strategy = "uuid")
+	private int idRes;
+	/* Clé primaire de la table Réponse_True */
 	private int idQuestion;
-	/* Clé primaire de la table Questions */
-	private String motCle;
-	private String question;
+	/* Clé étrangère de la table Questions */
+	private int idButeur;
+	/* Clé étrangère de la table ButeursFrancais 
+	 * C'est la réponse à la question. */
 	
+	public int getIdRes() {
+		return idRes;
+	}
+
+	public void setIdRes(int idRes) {
+		this.idRes = idRes;
+	}
+
 	public int getIdQuestion() {
 		return idQuestion;
 	}
@@ -27,19 +38,12 @@ public class Questions {
 		this.idQuestion = idQuestion;
 	}
 
-	public String getMotCle() {
-		return motCle;
+	public int getIdButeur() {
+		return idButeur;
 	}
-	
-	public void setMotCle(String motCle) {
-		this.motCle = motCle;
+
+	public void setIdButeur(int idButeur) {
+		this.idButeur = idButeur;
 	}
-	public String getQuestion() {
-		return question;
-	}
-	public void setQuestion(String question) {
-		this.question = question;
-	}
-	
 	
 }

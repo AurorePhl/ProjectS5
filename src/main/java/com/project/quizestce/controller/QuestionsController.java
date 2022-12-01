@@ -22,8 +22,8 @@ public class QuestionsController {
 		return questionsService.findAll();
 	}
 	
-	@GetMapping("/{motCle}")
-	public Questions findById(@PathVariable("motCle") String identifiant) {
+	@GetMapping("/{idQuestion}")
+	public Questions findById(@PathVariable("idQuestion") int identifiant) {
 		return questionsService.findById(identifiant);
 	}
 	

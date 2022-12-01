@@ -19,7 +19,6 @@ public class ButeursFrancais{
 	private String nom;
 	private String prenom;
 	private int nbButsMarques;
-	private boolean enActivite;
 	private String debutActivite; 
 	private String finActivite;
 	private int age; 
@@ -65,12 +64,6 @@ public class ButeursFrancais{
 	}
 	public void setNbButsMarques(int nbButsMarques) {
 		this.nbButsMarques = nbButsMarques;
-	}
-	public boolean isEnActivite() {
-		return enActivite;
-	}
-	public void setEnActivite(boolean enActivite) {
-		this.enActivite = enActivite;
 	}
 
 }
