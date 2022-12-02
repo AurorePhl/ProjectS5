@@ -1,5 +1,8 @@
 package com.project.quizestce.models;
 
+
+import java.sql.Date;
+
 import javax.persistence.Entity;
 import javax.persistence.GeneratedValue;
 import javax.persistence.Id;
@@ -14,31 +17,31 @@ public class ButeursFrancais{
 	@Id
 	@GeneratedValue(generator = "system-uuid")
 	@GenericGenerator(name = "system-uuid", strategy = "uuid")
-	private int id;
+	private String id;
 	/* Clé primaire de la table ButeursFrancais */
 	private String nom;
 	private String prenom;
 	private int nbButsMarques;
-	private String debutActivite; 
-	private String finActivite;
-	private int age; 
+	private int debutActivite; 
+	private int finActivite;
+	private Date dateDeNaissance; 
 	
-	public String getDebutActivite() {
+	public int getDebutActivite() {
 		return debutActivite;
 	}
-	public void setDebutActivite(String debutActivite) {
+	public void setDebutActivite(int debutActivite) {
 		this.debutActivite = debutActivite;
 	}
-	public String getFinActivite() {
+	public int getFinActivite() {
 		return finActivite;
 	}
-	public void setFinActivite(String finActivite) {
+	public void setFinActivite(int finActivite) {
 		this.finActivite = finActivite;
 	}
-	public int getId() {
+	public String getId() {
 		return id;
 	}
-	public void setId(int id) {
+	public void setId(String id) {
 		this.id = id;
 	}
 	public String getNom() {
@@ -53,17 +56,18 @@ public class ButeursFrancais{
 	public void setPrenom(String prenom) {
 		this.prenom = prenom;
 	}
-	public int getAge() {
-		return age;
-	}
-	public void setAge(int age) {
-		this.age = age;
-	}
+
 	public int getNbButsMarques() {
 		return nbButsMarques;
 	}
 	public void setNbButsMarques(int nbButsMarques) {
 		this.nbButsMarques = nbButsMarques;
 	}
-
+	public Date getDateDeNaissance() {
+		return dateDeNaissance;
+	}
+	public void setDateDeNaissance(Date dateDeNaissance) {
+		this.dateDeNaissance = dateDeNaissance;
+	}
+	
 }

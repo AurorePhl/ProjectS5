@@ -16,6 +16,8 @@ public class Clubs {
 	@GenericGenerator(name = "system-uuid", strategy = "uuid")
 	private int idClubs;
 	/* Clé primaire de la table Clubs */
+	private int idButeurs; 
+	/* Clé étrangère de la table ButeursFrancais */
 	private String pays;
 	private String nomClub;
 	
@@ -36,6 +38,13 @@ public class Clubs {
 	}
 	public void setNomClub(String nomClub) {
 		this.nomClub = nomClub;
+	}
+	
+	public int getIdButeurs() {
+		return idButeurs;
+	}
+	public void setIdButeurs(int idButeurs) {
+		this.idButeurs = idButeurs;
 	}
 	
 }
