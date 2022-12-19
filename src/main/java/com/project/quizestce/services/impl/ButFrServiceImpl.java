@@ -1,6 +1,8 @@
 package com.project.quizestce.services.impl;
 
 import java.util.List;
+import java.util.Map;
+import java.sql.Date;
 import java.util.ArrayList;
 
 import com.project.quizestce.dao.ButFrRepository;
@@ -39,6 +41,53 @@ public class ButFrServiceImpl implements ButFrService {
 	public void update(String identifiant, ButeursFrancais buteurFrancais) {
 		buteurFrancais.setId(identifiant);
 		butFrRepository.save(buteurFrancais);
+	}
+
+	@Override
+	public void partialUpdate(String identifiant, Map<String, Object> updates) {
+		ButeursFrancais buteurToUpdate = butFrRepository.findById(identifiant).get();
+		for(String key : updates.keySet()) {
+			switch(key) {
+			case "nom": {
+				buteurToUpdate.setNom((String) updates.get(key));
+				break;
+			}
+			case "prenom": {
+				buteurToUpdate.setPrenom((String) updates.get(key));
+				break;
+			}
+			case "dateDeNaissance": {
+				buteurToUpdate.setDateDeNaissance((Date) updates.get(key));
+				break;
+			}
+			case "nbButsMarques": {
+				buteurToUpdate.setNbButsMarques((int) updates.get(key));
+				break;
+			}
+			case "debutActivite": {
+				buteurToUpdate.setDebutActivite((int) updates.get(key));
+				break;
+			}
+			case "finActivite": {
+				buteurToUpdate.setFinActivite((int) updates.get(key));
+				break;
+			}
+			case "nbTES": {
+				buteurToUpdate.setNbTES((int) updates.get(key));
+				break;
+			}
+			case "nbTEC": {
+				buteurToUpdate.setNbTEC((int) updates.get(key));
+				break;
+			}
+			}
+		}
+		butFrRepository.save(buteurToUpdate);
+	}
+
+	@Override
+	public void deleteById(String identifiant) {
+		butFrRepository.deleteById(identifiant);
 	}
 	
 	

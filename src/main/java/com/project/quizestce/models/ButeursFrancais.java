@@ -25,6 +25,8 @@ public class ButeursFrancais{
 	private int debutActivite; 
 	private int finActivite;
 	private Date dateDeNaissance; 
+	private int nbTES;
+	private int nbTEC;
 	
 	public int getDebutActivite() {
 		return debutActivite;
@@ -68,6 +70,18 @@ public class ButeursFrancais{
 	}
 	public void setDateDeNaissance(Date dateDeNaissance) {
 		this.dateDeNaissance = dateDeNaissance;
+	}
+	public int getNbTES() {
+		return nbTES;
+	}
+	public void setNbTES(int nbTES) {
+		this.nbTES = nbTES;
+	}
+	public int getNbTEC() {
+		return nbTEC;
+	}
+	public void setNbTEC(int nbTEC) {
+		this.nbTEC = nbTEC;
 	}
 	
 }

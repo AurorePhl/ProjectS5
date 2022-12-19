@@ -1,5 +1,7 @@
 package com.project.quizestce.services;
 import java.util.List;
+import java.util.Map;
+
 import com.project.quizestce.models.ButeursFrancais;
 public interface ButFrService {
 	public List<ButeursFrancais> findAll();
@@ -9,5 +11,9 @@ public interface ButFrService {
 	public String create(ButeursFrancais buteurFrancais);
 
 	public void update(String identifiant, ButeursFrancais buteurFrancais);
+
+	public void partialUpdate(String identifiant, Map<String, Object> updates);
+
+	public void deleteById(String identifiant);
 
 }
