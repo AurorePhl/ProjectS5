@@ -4,6 +4,6 @@ import org.springframework.data.repository.CrudRepository;
 
 import com.project.quizestce.models.TitresEnSelection;
 
-public interface TitresEnSelectionRepository extends CrudRepository<TitresEnSelection,Integer>{
+public interface TitresEnSelectionRepository extends CrudRepository<TitresEnSelection,String>{
 
 }

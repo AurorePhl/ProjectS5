@@ -4,6 +4,6 @@ import org.springframework.data.repository.CrudRepository;
 
 import com.project.quizestce.models.Clubs;
 
-public interface ClubsRepository extends CrudRepository<Clubs,Integer>{
+public interface ClubsRepository extends CrudRepository<Clubs,String>{
 
 }

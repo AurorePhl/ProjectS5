@@ -14,31 +14,59 @@ public class TitresEnClub {
 	@Id
 	@GeneratedValue(generator = "system-uuid")
 	@GenericGenerator(name = "system-uuid", strategy = "uuid")
-	private int idTEC;
+	private String idTEC;
 	/* Clé primaire de la table TitresEnClub */
-	private int idClubs;
+	private String idClubs;
 	/* Clé étrangère de la table Clubs */
-	private int idButeurs;
-	/* Clé étrangère de la table ButeursFrancais */
 	private String date; 
 	private String titreClub;
 	
-	public int getIdTEC() {
+	@Override
+	public int hashCode() {
+		final int prime = 31;
+		int result = 1;
+		result = prime * result + ((date == null) ? 0 : date.hashCode());
+		result = prime * result + ((idClubs == null) ? 0 : idClubs.hashCode());
+		result = prime * result + ((titreClub == null) ? 0 : titreClub.hashCode());
+		return result;
+	}
+	@Override
+	public boolean equals(Object obj) {
+		if (this == obj)
+			return true;
+		if (obj == null)
+			return false;
+		if (getClass() != obj.getClass())
+			return false;
+		TitresEnClub other = (TitresEnClub) obj;
+		if (date == null) {
+			if (other.date != null)
+				return false;
+		} else if (!date.equals(other.date))
+			return false;
+		if (idClubs == null) {
+			if (other.idClubs != null)
+				return false;
+		} else if (!idClubs.equals(other.idClubs))
+			return false;
+		if (titreClub == null) {
+			if (other.titreClub != null)
+				return false;
+		} else if (!titreClub.equals(other.titreClub))
+			return false;
+		return true;
+	}
+	public String getIdTEC() {
 		return idTEC;
 	}
-	public void setIdTEC(int idTEC) {
+	public void setIdTEC(String idTEC) {
 		this.idTEC = idTEC;
 	}
-	public int getIdButeurs() {
-		return idButeurs;
-	}
-	public void setIdButeurs(int idButeurs) {
-		this.idButeurs = idButeurs;
-	}
-	public int getIdClubs() {
+
+	public String getIdClubs() {
 		return idClubs;
 	}
-	public void setIdClubs(int idClubs) {
+	public void setIdClubs(String idClubs) {
 		this.idClubs = idClubs;
 	}
 	public String getDate() {

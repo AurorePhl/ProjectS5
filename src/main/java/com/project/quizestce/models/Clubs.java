@@ -14,17 +14,46 @@ public class Clubs {
 	@Id
 	@GeneratedValue(generator = "system-uuid")
 	@GenericGenerator(name = "system-uuid", strategy = "uuid")
-	private int idClubs;
+	private String idClubs;
 	/* Clé primaire de la table Clubs */
-	private int idButeurs; 
-	/* Clé étrangère de la table ButeursFrancais */
 	private String pays;
 	private String nomClub;
 	
-	public int getIdClubs() {
+	@Override
+	public int hashCode() {
+		final int prime = 31;
+		int result = 1;
+		result = prime * result + ((nomClub == null) ? 0 : nomClub.hashCode());
+		result = prime * result + ((pays == null) ? 0 : pays.hashCode());
+		return result;
+	}
+	
+	@Override
+	public boolean equals(Object obj) {
+		if (this == obj)
+			return true;
+		if (obj == null)
+			return false;
+		if (getClass() != obj.getClass())
+			return false;
+		Clubs other = (Clubs) obj;
+		if (nomClub == null) {
+			if (other.nomClub != null)
+				return false;
+		} else if (!nomClub.equals(other.nomClub))
+			return false;
+		if (pays == null) {
+			if (other.pays != null)
+				return false;
+		} else if (!pays.equals(other.pays))
+			return false;
+		return true;
+	}
+	
+	public String getIdClubs() {
 		return idClubs;
 	}
-	public void setIdClubs(int idClubs) {
+	public void setIdClubs(String idClubs) {
 		this.idClubs = idClubs;
 	}
 	public String getPays() {
@@ -38,13 +67,6 @@ public class Clubs {
 	}
 	public void setNomClub(String nomClub) {
 		this.nomClub = nomClub;
-	}
-	
-	public int getIdButeurs() {
-		return idButeurs;
-	}
-	public void setIdButeurs(int idButeurs) {
-		this.idButeurs = idButeurs;
 	}
 	
 }

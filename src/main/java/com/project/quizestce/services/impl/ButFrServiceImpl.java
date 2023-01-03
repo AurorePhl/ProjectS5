@@ -2,10 +2,12 @@ package com.project.quizestce.services.impl;
 
 import java.util.List;
 import java.util.Map;
+import java.util.Set;
 import java.sql.Date;
 import java.util.ArrayList;
 
 import com.project.quizestce.dao.ButFrRepository;
+import com.project.quizestce.dao.ResRepository;
 import com.project.quizestce.models.ButeursFrancais;
 import com.project.quizestce.services.ButFrService;
 
@@ -17,6 +19,9 @@ public class ButFrServiceImpl implements ButFrService {
 	
 	@Autowired
 	private ButFrRepository butFrRepository;
+	
+	@Autowired
+	private ResRepository resRepository;
 
 	@Override
 	public List<ButeursFrancais> findAll() {
@@ -88,6 +93,11 @@ public class ButFrServiceImpl implements ButFrService {
 	@Override
 	public void deleteById(String identifiant) {
 		butFrRepository.deleteById(identifiant);
+	}
+
+	@Override
+	public Set<ButeursFrancais> findAllOfRes(String idRes) {
+		return resRepository.findById(idRes).get().getButeursFrancais();
 	}
 	
 	

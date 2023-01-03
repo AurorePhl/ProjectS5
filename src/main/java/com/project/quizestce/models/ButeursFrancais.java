@@ -2,10 +2,14 @@ package com.project.quizestce.models;
 
 
 import java.sql.Date;
+import java.util.HashSet;
+import java.util.Set;
 
+import javax.persistence.CascadeType;
 import javax.persistence.Entity;
 import javax.persistence.GeneratedValue;
 import javax.persistence.Id;
+import javax.persistence.OneToMany;
 import javax.persistence.Table;
 
 import org.hibernate.annotations.GenericGenerator;
@@ -27,6 +31,15 @@ public class ButeursFrancais{
 	private Date dateDeNaissance; 
 	private int nbTES;
 	private int nbTEC;
+	
+	@OneToMany(cascade = CascadeType.ALL)
+	private Set<Clubs> clubs = new HashSet<Clubs>();
+	
+	@OneToMany(cascade = CascadeType.ALL)
+	private Set<TitresEnClub> tec = new HashSet<TitresEnClub>();
+	
+	@OneToMany(cascade = CascadeType.ALL)
+	private Set<TitresEnSelection> tes = new HashSet<TitresEnSelection>();
 	
 	public int getDebutActivite() {
 		return debutActivite;
@@ -82,6 +95,24 @@ public class ButeursFrancais{
 	}
 	public void setNbTEC(int nbTEC) {
 		this.nbTEC = nbTEC;
+	}
+	public Set<Clubs> getClubs() {
+		return clubs;
+	}
+	public void setClubs(Set<Clubs> clubs) {
+		this.clubs = clubs;
+	}
+	public Set<TitresEnClub> getTec() {
+		return tec;
+	}
+	public void setTec(Set<TitresEnClub> tec) {
+		this.tec = tec;
+	}
+	public Set<TitresEnSelection> getTes() {
+		return tes;
+	}
+	public void setTes(Set<TitresEnSelection> tes) {
+		this.tes = tes;
 	}
 	
 }

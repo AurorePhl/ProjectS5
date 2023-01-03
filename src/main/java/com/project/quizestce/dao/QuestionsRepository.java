@@ -4,7 +4,7 @@ import org.springframework.data.repository.CrudRepository;
 
 import com.project.quizestce.models.Questions;
 
-public interface QuestionsRepository extends CrudRepository<Questions,Integer>{
+public interface QuestionsRepository extends CrudRepository<Questions,String>{
 
 
 
