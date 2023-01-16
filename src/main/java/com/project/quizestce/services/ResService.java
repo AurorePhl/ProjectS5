@@ -14,11 +14,13 @@ public interface ResService {
 
 	public Set<Res> findAllOfQuestions(String idQuestion) ;
 
-	public String create(String idQuestion, Res res);
+	public String create(String idQuestion, String idBut, Res res);
 
 	public void update(String idRes, Res res);
 
 	public void partialUpdate(String idRes, Map<String, Object> updates);
 
 	public void deleteById(String idQuestion, String idRes);
+
+	
 }

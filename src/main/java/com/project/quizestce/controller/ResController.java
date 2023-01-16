@@ -17,6 +17,7 @@ import org.springframework.web.bind.annotation.ResponseStatus;
 import org.springframework.web.bind.annotation.RestController;
 
 import com.project.quizestce.models.Res;
+import com.project.quizestce.services.ButFrService;
 import com.project.quizestce.services.QuestionsService;
 import com.project.quizestce.services.ResService;
 import com.project.quizestce.util.CtrlPreconditions;
@@ -29,6 +30,9 @@ public class ResController {
 	
 	@Autowired
 	private QuestionsService questionService;
+	
+	@Autowired
+	private ButFrService butService;
 	
 	@GetMapping("/res")
 	public List<Res> findAll(){
@@ -48,11 +52,12 @@ public class ResController {
 		return resService.findAllOfQuestions(idQuestion);
 	}
 	
-	@PostMapping("/questions/{idQuestion}/res")
+	@PostMapping("/questions/{idQuestion}/{idButeur}/res")
 	@ResponseStatus(code = HttpStatus.CREATED)
-	public String create(@PathVariable("idQuestion") String idQuestion, @RequestBody Res res) {
+	public String create(@PathVariable("idQuestion") String idQuestion,@PathVariable("idButeur") String idBut, @RequestBody Res res) {
 		CtrlPreconditions.checkFound(questionService.findById(idQuestion));
-		return resService.create(idQuestion, res);
+		CtrlPreconditions.checkFound(butService.findById(idBut));
+		return resService.create(idQuestion, idBut, res);
 	}
 	
 	@PutMapping("/res/{idRes}")

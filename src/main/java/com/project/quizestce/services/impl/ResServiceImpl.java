@@ -8,10 +8,14 @@ import java.util.Set;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
+import com.project.quizestce.controller.ButFrController;
+import com.project.quizestce.dao.ButFrRepository;
 import com.project.quizestce.dao.QuestionsRepository;
 import com.project.quizestce.dao.ResRepository;
+import com.project.quizestce.models.ButeursFrancais;
 import com.project.quizestce.models.Questions;
 import com.project.quizestce.models.Res;
+import com.project.quizestce.services.ButFrService;
 import com.project.quizestce.services.ResService;
 
 @Service
@@ -22,6 +26,10 @@ public class ResServiceImpl implements ResService {
 	
 	@Autowired 
 	private QuestionsRepository questionsRepository;
+	
+	@Autowired 
+	private ButFrRepository buteurRepository;
+	
 	
 	@Override
 	public List<Res> findAll() {
@@ -44,12 +52,20 @@ public class ResServiceImpl implements ResService {
 	}
 
 	@Override
-	public String create(String idQuestion, Res res) {
+	public String create(String idQuestion, String idBut, Res res) {
 		Questions questionEntity = questionsRepository.findById(idQuestion).get();
 		questionEntity.getRes().add(res);
 		questionsRepository.save(questionEntity);
+		
 		Res resEntity = questionEntity.getRes().stream().filter(r -> r.equals(res)).findFirst().get();
-		return resEntity.getIdRes();
+		ButeursFrancais butEntity = buteurRepository.findById(idBut).get();
+		butEntity.getReponses().add(resEntity);
+		buteurRepository.save(butEntity);
+		Res resEntity1 = questionEntity.getRes().stream().filter(r -> r.equals(resEntity)).findFirst().get();
+		/*resEntity.getButeursFrancais().add(butEntity);
+		resRepository.save(resEntity);
+		ButeursFrancais buteurEntity = resEntity.getButeursFrancais().stream().filter(b -> b.equals(butEntity)).findFirst().get();*/
+		return resEntity.getIdRes() ;
 	}
 
 	@Override

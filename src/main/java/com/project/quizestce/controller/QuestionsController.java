@@ -1,5 +1,7 @@
 package com.project.quizestce.controller;
 
+import java.util.Collection;
+import java.util.LinkedList;
 import java.util.List;
 import java.util.Map;
 
@@ -36,6 +38,17 @@ public class QuestionsController {
 	public Questions findById(@PathVariable("idQuestion") String identifiant) {
 		Questions res = questionsService.findById(identifiant);
 		CtrlPreconditions.checkFound(res);
+		return res;
+	}
+	
+	@GetMapping("/mc")
+	public Collection<? extends String> findMotCle(){
+		List<Questions> questions = questionsService.findAll();
+		CtrlPreconditions.checkFound(questions);
+		Collection<String> res = new LinkedList<String>();
+		for(int i=0;i<questions.size();i++) {
+			res.add(questions.get(i).getMotCle());
+		}
 		return res;
 	}
 	

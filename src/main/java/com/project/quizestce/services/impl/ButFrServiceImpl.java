@@ -9,6 +9,7 @@ import java.util.ArrayList;
 import com.project.quizestce.dao.ButFrRepository;
 import com.project.quizestce.dao.ResRepository;
 import com.project.quizestce.models.ButeursFrancais;
+import com.project.quizestce.models.Res;
 import com.project.quizestce.services.ButFrService;
 
 import org.springframework.beans.factory.annotation.Autowired;
@@ -81,8 +82,8 @@ public class ButFrServiceImpl implements ButFrService {
 				buteurToUpdate.setNbTES((int) updates.get(key));
 				break;
 			}
-			case "nbTEC": {
-				buteurToUpdate.setNbTEC((int) updates.get(key));
+			case "rang": {
+				buteurToUpdate.setRang((int) updates.get(key));
 				break;
 			}
 			}
@@ -98,6 +99,25 @@ public class ButFrServiceImpl implements ButFrService {
 	@Override
 	public Set<ButeursFrancais> findAllOfRes(String idRes) {
 		return resRepository.findById(idRes).get().getButeursFrancais();
+	}
+
+	@Override
+	public String createByRes(String idRes, String idbuteur) {
+		Res resEntity = resRepository.findById(idRes).get();
+		resEntity.getButeursFrancais().add(findById(idbuteur));
+		resRepository.save(resEntity);
+		return idbuteur;
+	}
+
+	@Override
+	public void deleteByIdRes(String idRes, String idButeur) {
+		Res resToUpdate = resRepository.findById(idRes).get();
+		Set<ButeursFrancais> but = resToUpdate.getButeursFrancais();
+		ButeursFrancais butToUpdate = but.stream().filter(b -> b.getId().equals(idButeur)).findFirst().get();
+		but.remove(butToUpdate);
+		resToUpdate.setButeursFrancais(but);
+		resRepository.save(resToUpdate);
+		butFrRepository.delete(butToUpdate);
 	}
 	
 	

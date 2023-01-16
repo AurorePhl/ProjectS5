@@ -66,5 +66,4 @@ public class QuestionsServiceImpl implements QuestionsService {
 		questionsRepository.deleteById(identifiant);
 	}
 
-
 }

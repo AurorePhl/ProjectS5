@@ -16,6 +16,7 @@ import org.springframework.web.bind.annotation.ResponseStatus;
 import org.springframework.web.bind.annotation.RestController;
 
 import com.project.quizestce.models.ButeursFrancais;
+import com.project.quizestce.models.Res;
 import com.project.quizestce.services.ButFrService;
 import com.project.quizestce.services.ResService;
 import com.project.quizestce.util.CtrlPreconditions;
@@ -53,6 +54,13 @@ public class ButFrController {
 		return butFrService.create(buteurFrancais);
 	}
 	
+	@PostMapping("/res/{idRes}/buteursFrancais/{idBut}")
+	@ResponseStatus(code = HttpStatus.CREATED)
+	public String createByRes(@PathVariable("idRes") String idRes, @PathVariable("idBut") String idBut) {
+		CtrlPreconditions.checkFound(resService.findById(idRes));
+		return butFrService.createByRes(idRes, idBut);
+	}
+	
 	@PutMapping("/buteursFrancais/{id}")
 	@ResponseStatus(code = HttpStatus.OK)
 	public void update(@PathVariable("id") String identifiant, @RequestBody ButeursFrancais buteurFrancais) {
@@ -74,4 +82,11 @@ public class ButFrController {
 		butFrService.deleteById(identifiant);
 	}
 	
+	@DeleteMapping("/res/{idRes}/buteursFrancais/{idButeur}")
+	@ResponseStatus(code = HttpStatus.OK) 
+	public void deleteByIdRes(@PathVariable("idRes") String idRes, @PathVariable("idButeur") String idButeur) {
+		CtrlPreconditions.checkFound(resService.findById(idRes));
+		CtrlPreconditions.checkFound(idButeur);
+		butFrService.deleteByIdRes(idRes,idButeur);
+	}
 }

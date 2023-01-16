@@ -30,7 +30,7 @@ public class ButeursFrancais{
 	private int finActivite;
 	private Date dateDeNaissance; 
 	private int nbTES;
-	private int nbTEC;
+	private int rang;
 	
 	@OneToMany(cascade = CascadeType.ALL)
 	private Set<Clubs> clubs = new HashSet<Clubs>();
@@ -40,6 +40,9 @@ public class ButeursFrancais{
 	
 	@OneToMany(cascade = CascadeType.ALL)
 	private Set<TitresEnSelection> tes = new HashSet<TitresEnSelection>();
+
+	@OneToMany(cascade = CascadeType.ALL)
+	private Set<Res> reponses = new HashSet<Res>();
 	
 	public int getDebutActivite() {
 		return debutActivite;
@@ -90,11 +93,12 @@ public class ButeursFrancais{
 	public void setNbTES(int nbTES) {
 		this.nbTES = nbTES;
 	}
-	public int getNbTEC() {
-		return nbTEC;
+	
+	public int getRang() {
+		return rang;
 	}
-	public void setNbTEC(int nbTEC) {
-		this.nbTEC = nbTEC;
+	public void setRang(int rang) {
+		this.rang = rang;
 	}
 	public Set<Clubs> getClubs() {
 		return clubs;
@@ -114,5 +118,13 @@ public class ButeursFrancais{
 	public void setTes(Set<TitresEnSelection> tes) {
 		this.tes = tes;
 	}
+	public Set<Res> getReponses() {
+		return reponses;
+	}
+	public void setReponses(Set<Res> reponses) {
+		this.reponses = reponses;
+	}
+
+	
 	
 }

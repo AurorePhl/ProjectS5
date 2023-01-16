@@ -19,4 +19,8 @@ public interface ButFrService {
 
 	public Set<ButeursFrancais> findAllOfRes(String idRes);
 
+	public String createByRes(String idRes, String idBut);
+
+	public void deleteByIdRes(String idRes, String idButeur);
+
 }
